@@ -44,24 +44,14 @@ class Titulaire
 		return $this->_listDesComptes;
 	}
 
-	/**
-	 * Set the value of _listDesComptes
-	 *
-	 * @return  self
-	 */ 
+	
 	public function set_listDesComptes($_listDesComptes)
 	{
 		$this->_listDesComptes = $_listDesComptes;
-
 		return $this;
 	}
 	
 }
 
-$t1 = new Titulaire("kayal","georges",'01-01-1986',"strasbourg");
-//echo $t1;
-
-$c1 = new Compte($t1, "€", 500, "test");
-echo $c1;
 
 
