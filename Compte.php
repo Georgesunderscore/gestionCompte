@@ -19,7 +19,7 @@ class Compte
 	}
 	public function __toString()
 	{
-		$ecrire = $this->_titulaire ."". $this->_devise . $this->_solde . $this->_libelle;
+		$ecrire = $this->_titulaire ." ". $this->_devise ." ". $this->_solde ." ". $this->_libelle;
 		return $ecrire;
 	}
 
@@ -53,12 +53,12 @@ class Compte
 		$this->_devise = $devise;
 	}
 
-	public function getTitulaire(): string
+	public function getTitulaire(): Titulaire
 	{
 		return $this->_titulaire;
 	}
 
-	public function setTitulaire(string $titulaire)
+	public function setTitulaire(Titulaire $titulaire)
 	{
 		$this->_titulaire = $titulaire;
 	}
@@ -74,13 +74,27 @@ class Compte
 		//Debiter le compte de X euros
 		$this->_solde = $this->_solde - $valCredit;
 	}
-									// valeur virer du compte courant a un compte precis
-	public function virementCompte( float $val,Compte $compte)
-	{
+	
+
+	//virement dun compte a un autre 
+	public function virementCompte( Compte $compteSource,Compte $compteDestinataire,float $val)
+	{	//test meme titulaire d'un compte 
 		//Effectuer un virement d'un compte à l'autre.
-		$this->_solde = $this->_solde - $val;
-		$compte->setSolde($compte->getSolde()  +  $val);
+		if($val < 100000){
+			$compteSource->_solde = $compteSource->_solde - $val;
+			$compteDestinataire->_solde = $compteDestinataire->_solde + $val;
+			$compte->setSolde($compte->getSolde()  +  $val);
+		}
+		else{
+			echo "Vous Avez Depassé la Limite de Virement";
+		}
+		
 	}
+
+	
+
+	
+	
 
 	
 	

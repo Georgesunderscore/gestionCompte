@@ -9,7 +9,7 @@ spl_autoload_register(function ($class_name) {
     });
     
 $t1 = new Titulaire("kayal","georges",'01-01-1986',"strasbourg");
-//echo $t1;
+echo $t1;
 
-$c1 = new Compte($t1, "€", 500, "test");
+$c1 = new Compte($t1, "€", 500, "Livret A");
 echo $c1;
